@@ -1,0 +1,19 @@
+{
+  "name": "mock",
+  "version": "1.0.0",
+  "description": "封装mock，模拟数据系统",
+  "main": "reference.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "fumq",
+  "license": "ISC",
+  "devDependencies": {
+    "mockjs": "^1.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  }
+}
