@@ -3,7 +3,7 @@ const Mock = require('mockjs');
 const router = express.Router();
 const fs = require("fs");
 const ROOTPATH = './template';
-const ip = require('./tool/IP.js').IPv4;
+const ip = require('./lib/IP.js').IPv4;
 const config = require('./config.json');
 const CLIENTMETHOD = {
     post: "POST", get: "GET"
