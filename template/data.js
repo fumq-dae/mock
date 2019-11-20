@@ -11,9 +11,15 @@ module.exports = {
     'phone': /^(13|14|15|18)[0-9]\d{8}$/,//phone: 符合正则的随机字符串
     'data|5': [//order: 重复10次指定内容组成一个数组
       {
+        'value|1-100.2': 1,
         'id|+1': 10000,//id从10000开始，每次+1
         'orderName': '@ctitle',//orderName: 随机生成一个中文标题
         'orderTime': '@datetime',//orderTime: 随机生成一个 yyyy-MM-dd HH:mm:ss 格式的时间
+        'date': '@date',
+        'template':function(par){
+           return `站点${JSON.stringify(par)}`;
+          return `站点${par.context.path[3]}`;
+        }
       }
     ],
     'loginTime': function () {//loginTime: 函数的生成的特定返回值

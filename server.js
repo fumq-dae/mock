@@ -14,7 +14,7 @@ http.createServer(server).listen(config.port);
 log(`服务启动, http://${ip}:${config.port}`);
 log(`------------------------------------------`);
 
-// server.use("/mock/sys/menu",function (req, res, next) {
+// server.use("/mock/sys/menu",function (req, res, next) { 
 //     console.log("ceshi");
 //     res.header("Access-Control-Allow-Origin", "*");
 //     res.header("Access-Control-Allow-Headers", "X-Requested-With");
