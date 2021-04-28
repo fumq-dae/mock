@@ -1,0 +1,2277 @@
+{
+    "time": "2021-04-26 14:48:55",
+    "result": true,
+    "code": 0,
+    "message": null,
+    "messageType": 0,
+    "searchDate": null,
+    "data": {
+        "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+        "title": "反反复复",
+        "purchaseType": 0,
+        "businessLine": "engineering_real_estate",
+        "canEdit": true,
+        "isInvalid": 0,
+        "buttonList": [
+            {
+                "code": "save",
+                "name": "保存",
+                "url": null,
+                "disabled": false,
+                "disabledTips": null,
+                "tips": "确认保存",
+                "clickTips": "确认保存"
+            },
+            {
+                "code": "edit",
+                "name": "修改",
+                "url": null,
+                "disabled": false,
+                "disabledTips": null,
+                "tips": "确认修改",
+                "clickTips": "确认修改"
+            },
+            {
+                "code": "delete",
+                "name": "删除",
+                "url": null,
+                "disabled": false,
+                "disabledTips": null,
+                "tips": "删除后无法恢复",
+                "clickTips": "删除后无法恢复"
+            },
+            {
+                "code": "audit",
+                "name": "确认",
+                "url": null,
+                "disabled": false,
+                "disabledTips": null,
+                "tips": "确认后不可修改",
+                "clickTips": "确认后不可修改"
+            }
+        ],
+        "adjustLogList": null,
+        "floatButtonList": null,
+        "bidMethod": null,
+        "arithmeticQuoteIncludingTax": null,
+        "bidSectionList": null,
+        "sectionType": null,
+        "id": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+        "auditStatus": 0,
+        "businessCode": "engineering_real_estate",
+        "template": [
+            {
+                "fieldId": 19,
+                "fieldName": "计划信息",
+                "fieldCode": "planInfo",
+                "required": null,
+                "readonly": null,
+                "widget": "FormItemContainer",
+                "extra": {
+                    "formLayout": {
+                        "layout": "ContainerFormLayout",
+                        "display": "block",
+                        "titleFontSize": 18,
+                        "padding": "20px 40px 20px 40px",
+                        "background": "#ffffff"
+                    }
+                },
+                "sort": 0,
+                "fields": [
+                    {
+                        "fieldId": 86,
+                        "fieldName": "计划信息",
+                        "fieldCode": "planInfo",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "FormItemContainer",
+                        "extra": {
+                            "formLayout": {
+                                "hideTitle": true,
+                                "layout": "VerticalFormLayout",
+                                "verticalAlign": "top",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "715px",
+                                "minWidth": 330,
+                                "required": true
+                            }
+                        },
+                        "sort": 0,
+                        "fields": [
+                            {
+                                "fieldId": 236,
+                                "fieldName": "是否关联招标计划",
+                                "fieldCode": "isRelatePlan",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Null",
+                                "extra": null,
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 237,
+                                "fieldName": "招标计划名称",
+                                "fieldCode": "plan",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "FormItemSwitchContainer",
+                                "extra": {
+                                    "servants": {
+                                        "0": {
+                                            "widget": "Select",
+                                            "key": "planDisabled",
+                                            "disabled": true
+                                        },
+                                        "1": {
+                                            "widget": "Select",
+                                            "key": "plan",
+                                            "api": "/bid/purchase-plan/audited-list",
+                                            "adapter": "idTitleAdapter",
+                                            "rules": {
+                                                "required": {
+                                                    "validator": "required",
+                                                    "errorMessage": "必填字段， 请填写"
+                                                }
+                                            },
+                                            "emitters": [
+                                                {
+                                                    "topic": "purchase-plan-finishDate-change",
+                                                    "bind": "onChange"
+                                                },
+                                                {
+                                                    "topic": "purchase-plan-project-change",
+                                                    "bind": "onChange"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "placeholder": "",
+                                    "radioLabel": "是否关联招标计划",
+                                    "defaultValue": {
+                                        "checked": "0"
+                                    },
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ],
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 18px 10px 0px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "715px",
+                                        "minWidth": 330,
+                                        "required": true
+                                    }
+                                },
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 87,
+                        "fieldName": "招标计划完成时间",
+                        "fieldCode": "planFinishDate",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "DatePicker",
+                        "extra": {
+                            "listeners": [
+                                {
+                                    "topic": "purchase-plan-finishDate-change",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "setDate",
+                                        "key": "finishDate"
+                                    }
+                                }
+                            ],
+                            "placeholder": "",
+                            "disabled": true,
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 0px 10px 18px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "360px",
+                                "minWidth": 330
+                            },
+                            "rules": {}
+                        },
+                        "sort": 5,
+                        "fields": [
+                            {
+                                "fieldId": 238,
+                                "fieldName": "计划完成时间",
+                                "fieldCode": "planFinishDate",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "DatePicker",
+                                "extra": {
+                                    "listeners": [
+                                        {
+                                            "topic": "purchase-plan-change",
+                                            "handler": "service",
+                                            "payloadExtend": {
+                                                "action": "bidPlanDateService"
+                                            }
+                                        }
+                                    ],
+                                    "placeholder": "",
+                                    "disabled": true,
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 0px 10px 18px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "360px",
+                                        "minWidth": 330,
+                                        "required": true
+                                    },
+                                    "rules": {
+                                        "required": {
+                                            "validator": "required",
+                                            "errorMessage": "必填字段， 请填写"
+                                        }
+                                    }
+                                },
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 88,
+                        "fieldName": "时间计划信息",
+                        "fieldCode": "timeInfo",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "FormItemTableContainer",
+                        "extra": {
+                            "defaultValue": [
+                                {
+                                    "rowKey": "bidTimesConfig-row1-default-value"
+                                }
+                            ],
+                            "cellListeners": [
+                                {
+                                    "bindCell": "*-planConfirmBidTime",
+                                    "topic": "purchase-plan-finishDate-change",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "setDate",
+                                        "key": "finishDate"
+                                    }
+                                }
+                            ]
+                        },
+                        "sort": 10,
+                        "fields": [
+                            {
+                                "fieldId": 239,
+                                "fieldName": "计划发标时间",
+                                "fieldCode": "planSendBidTime",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "DatePicker",
+                                "extra": null,
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 240,
+                                "fieldName": "计划技术回标截止时间",
+                                "fieldCode": "planTechnicalEndTime",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "DatePicker",
+                                "extra": null,
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 241,
+                                "fieldName": "计划商务回标截止时间",
+                                "fieldCode": "planBusinessEndTime",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "DatePicker",
+                                "extra": null,
+                                "sort": 10,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 242,
+                                "fieldName": "计划定标时间",
+                                "fieldCode": "planConfirmBidTime",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "DatePicker",
+                                "extra": null,
+                                "sort": 15,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    }
+                ],
+                "remark": ""
+            },
+            {
+                "fieldId": 20,
+                "fieldName": "基本信息",
+                "fieldCode": "basicInfo",
+                "required": null,
+                "readonly": null,
+                "widget": "FormItemContainer",
+                "extra": {
+                    "formLayout": {
+                        "layout": "ContainerFormLayout",
+                        "display": "block",
+                        "titleFontSize": 18,
+                        "padding": "20px 40px 20px 40px",
+                        "background": "#ffffff"
+                    }
+                },
+                "sort": 5,
+                "fields": [
+                    {
+                        "fieldId": 261,
+                        "fieldName": "招标类型",
+                        "fieldCode": "bidPurchaseType",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "RadioGroup",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 18px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "block",
+                                "width": "715px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            },
+                            "delayBroadcast": {
+                                "emitter": "onChange"
+                            },
+                            "defaultValue": "0",
+                            "options": [
+                                {
+                                    "label": "单项采购",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "战略采购",
+                                    "value": "3"
+                                }
+                            ]
+                        },
+                        "sort": 0,
+                        "fields": [
+                            {
+                                "fieldId": 483,
+                                "fieldName": "招标类型",
+                                "fieldCode": "bidPurchaseType",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Radio",
+                                "extra": null,
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 89,
+                        "fieldName": "招标策划名称",
+                        "fieldCode": "title",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Input",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 18px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "715px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                },
+                                "maxLength": {
+                                    "validator": "maxLength",
+                                    "errorMessage": "招标立项名称不超过100字",
+                                    "arguments": 100
+                                }
+                            },
+                            "listeners": [
+                                {
+                                    "handler": "setPlanValue",
+                                    "topic": "purchase-plan-change"
+                                }
+                            ]
+                        },
+                        "sort": 0,
+                        "fields": [
+                            {
+                                "fieldId": 243,
+                                "fieldName": "招标策划名称",
+                                "fieldCode": "title",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": {
+                                    "servants": {
+                                        "0": {
+                                            "widget": "Select",
+                                            "key": "planDisabled",
+                                            "disabled": true
+                                        },
+                                        "1": {
+                                            "widget": "Select",
+                                            "key": "plan",
+                                            "api": "/bid/purchase-plan/audited-list",
+                                            "adapter": "idTitleAdapter",
+                                            "rules": {
+                                                "required": {
+                                                    "validator": "required",
+                                                    "errorMessage": "必填字段， 请填写"
+                                                }
+                                            },
+                                            "emitters": [
+                                                {
+                                                    "topic": "purchase-plan-finishDate-change",
+                                                    "bind": "onChange"
+                                                },
+                                                {
+                                                    "topic": "purchase-plan-project-change",
+                                                    "bind": "onChange"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "placeholder": "",
+                                    "radioLabel": "战采类型",
+                                    "defaultValue": {
+                                        "checked": "0"
+                                    },
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ],
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 18px 10px 0px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "715px",
+                                        "minWidth": 330,
+                                        "required": true
+                                    }
+                                },
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 117,
+                        "fieldName": "招标策划编号",
+                        "fieldCode": "number",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Input",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 20px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "350px",
+                                "minWidth": 330
+                            },
+                            "disabled": true,
+                            "placeholder": ""
+                        },
+                        "sort": 5,
+                        "fields": [
+                            {
+                                "fieldId": 246,
+                                "fieldName": "招标策划编号",
+                                "fieldCode": "number",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 90,
+                        "fieldName": "所属组织",
+                        "fieldCode": "company",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Select",
+                        "extra": {
+                            "placeholder": "",
+                            "api": "/basic/org/get-actionable-org-with-keyword",
+                            "adapter": "serviceNamePathCompanyAdapter",
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 18px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "490px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            },
+                            "emitters": [
+                                {
+                                    "topic": "change-service-company-value",
+                                    "bind": "onChange"
+                                },
+                                {
+                                    "topic": "emit-service-company-value",
+                                    "bind": "emitValue"
+                                }
+                            ],
+                            "listeners": [
+                                {
+                                    "topic": "give-me-company-value",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "callback",
+                                        "emitter": "emitValue"
+                                    }
+                                }
+                            ]
+                        },
+                        "sort": 10,
+                        "fields": [
+                            {
+                                "fieldId": 244,
+                                "fieldName": "所属组织",
+                                "fieldCode": "company",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 10,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 122,
+                        "fieldName": "",
+                        "fieldCode": "department",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Select",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 18px 10px 0px ",
+                                "margin": "0 0 0 -20px",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "244px",
+                                "minWidth": 100,
+                                "required": true
+                            },
+                            "search": true,
+                            "disabledFetchOnMount": true,
+                            "listeners": [
+                                {
+                                    "handler": "service",
+                                    "topic": "change-service-company-value",
+                                    "payloadExtend": {
+                                        "clear": "clearValue",
+                                        "action": "setDepartmentOptions"
+                                    }
+                                },
+                                {
+                                    "handler": "service",
+                                    "topic": "emit-service-company-value",
+                                    "payloadExtend": {
+                                        "action": "setDepartmentOptions"
+                                    }
+                                }
+                            ],
+                            "emitters": [
+                                {
+                                    "bind": "didMount",
+                                    "topic": "give-me-company-value"
+                                }
+                            ],
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            },
+                            "api": "/basic/org/get-company-department-list",
+                            "placeholder": "请选择部门",
+                            "broadcastDidMount": true
+                        },
+                        "sort": 12,
+                        "fields": [
+                            {
+                                "fieldId": 329,
+                                "fieldName": "所属组织部门",
+                                "fieldCode": "department",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 91,
+                        "fieldName": "所属项目",
+                        "fieldCode": "project",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "ProjectSelect",
+                        "extra": {
+                            "disabledIfNotEnd": true,
+                            "multiple": "true",
+                            "noInitFetch": true,
+                            "needCompanyId": true,
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 18px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "715px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            },
+                            "emitters": [
+                                {
+                                    "topic": "bid-project-change",
+                                    "bind": "onChange"
+                                },
+                                {
+                                    "topic": "emit-bid-project-value",
+                                    "bind": "emitValue"
+                                },
+                                {
+                                    "topic": "give-me-company-value",
+                                    "bind": "didMount"
+                                }
+                            ],
+                            "listeners": [
+                                {
+                                    "topic": "give-me-bid-project",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "emitValue"
+                                    }
+                                },
+                                {
+                                    "topic": "change-service-company-value",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "updateProjectOptionsWithCompany"
+                                    }
+                                },
+                                {
+                                    "topic": "change-service-company-value",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "clearValue"
+                                    }
+                                },
+                                {
+                                    "topic": "emit-service-company-value",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "updateProjectOptionsWithCompany"
+                                    }
+                                },
+                                {
+                                    "topic": "purchase-plan-project-change",
+                                    "handler": "service",
+                                    "payloadExtend": {
+                                        "action": "updateValue",
+                                        "key": "authProjectList"
+                                    }
+                                }
+                            ]
+                        },
+                        "sort": 15,
+                        "fields": [
+                            {
+                                "fieldId": 245,
+                                "fieldName": "所属项目",
+                                "fieldCode": "projectList",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 15,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 111,
+                        "fieldName": "产品与服务",
+                        "fieldCode": "serviceType",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "SupplierCategory",
+                        "extra": {
+                            "placeholder": "",
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 20px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "715px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            },
+                            "multiple": false,
+                            "noExplain": true
+                        },
+                        "sort": 20,
+                        "fields": [
+                            {
+                                "fieldId": 318,
+                                "fieldName": "产品与服务",
+                                "fieldCode": "serviceType",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 20,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 93,
+                        "fieldName": "招标负责人",
+                        "fieldCode": "manager",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "UserSelect",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 20px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "350px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "adapter": "userSelectAdapter",
+                            "disabled": true,
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            },
+                            "api": "/basic/admin/get-all-system-user",
+                            "userDetailAPI": "/common/user/detail",
+                            "placeholder": "",
+                            "modifyParams": {
+                                "confirmAPI": "/bid/adjust-bid-member",
+                                "type": 0
+                            }
+                        },
+                        "sort": 25,
+                        "fields": [
+                            {
+                                "fieldId": 247,
+                                "fieldName": "招标负责人",
+                                "fieldCode": "manager",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 25,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 96,
+                        "fieldName": "",
+                        "fieldCode": "section",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Form3DTableContainer",
+                        "extra": {
+                            "colRemoveOnSingle": [
+                                "name"
+                            ],
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "20px 0px 20px 0px",
+                                "titleFontSize": 18,
+                                "background": "#ffffff",
+                                "display": "block"
+                            },
+                            "subTitle": "标段",
+                            "defaultValue": [
+                                {
+                                    "value": [
+                                        {
+                                            "rowKey": "bidSections-default-row-rowkey-defaultRow1"
+                                        }
+                                    ],
+                                    "rowKey": "bidSections-default-row-rowkey1"
+                                }
+                            ],
+                            "emitters": [
+                                {
+                                    "bind": "onChange",
+                                    "topic": "send-me-company-value"
+                                }
+                            ],
+                            "addText": "新增标段"
+                        },
+                        "sort": 30,
+                        "fields": [
+                            {
+                                "fieldId": 250,
+                                "fieldName": "标段名称",
+                                "fieldCode": "name",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Textarea",
+                                "extra": {
+                                    "autosize": {
+                                        "minRows": 1
+                                    },
+                                    "rules": {
+                                        "required": {
+                                            "validator": "required",
+                                            "errorMessage": "必填项，请填写"
+                                        }
+                                    },
+                                    "required": true
+                                },
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 256,
+                                "fieldName": "预估金额",
+                                "fieldCode": "valuation",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "InputBigNumber",
+                                "extra": {
+                                    "suffix": "元",
+                                    "precision": 2,
+                                    "rules": {
+                                        "max": {
+                                            "validator": "max",
+                                            "arguments": 999999999999999,
+                                            "errorMessage": "不得超过999999999999999"
+                                        },
+                                        "min": {
+                                            "validator": "min",
+                                            "arguments": [
+                                                0,
+                                                true
+                                            ],
+                                            "errorMessage": "允许的最小值为0"
+                                        }
+                                    }
+                                },
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 251,
+                                "fieldName": "说明",
+                                "fieldCode": "remark",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Textarea",
+                                "extra": {
+                                    "autosize": {
+                                        "minRows": 1
+                                    }
+                                },
+                                "sort": 10,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    }
+                ],
+                "remark": ""
+            },
+            {
+                "fieldId": 21,
+                "fieldName": "招标规则",
+                "fieldCode": "bidRule",
+                "required": null,
+                "readonly": null,
+                "widget": "FormItemContainer",
+                "extra": {
+                    "formLayout": {
+                        "layout": "ContainerFormLayout",
+                        "display": "block",
+                        "titleFontSize": 18,
+                        "padding": "20px 40px 20px 40px",
+                        "background": "#ffffff"
+                    }
+                },
+                "sort": 10,
+                "fields": [
+                    {
+                        "fieldId": 260,
+                        "fieldName": "招标方式",
+                        "fieldCode": "bidMethod",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "RadioGroup",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "HorizontalFormLayout",
+                                "gutter": 22,
+                                "titleFontSize": 13,
+                                "display": "block",
+                                "width": 650,
+                                "labelWidth": 90,
+                                "minWidth": 330,
+                                "labelHeight": 22
+                            },
+                            "delayBroadcast": {
+                                "emitter": "onChange"
+                            },
+                            "defaultValue": "0",
+                            "emitters": [
+                                {
+                                    "bind": "onChange",
+                                    "topic": "emit-change-value"
+                                },
+                                {
+                                    "bind": "emitValue",
+                                    "topic": "emit-bidMethod-value"
+                                },
+                                {
+                                    "bind": "clearSelectValue",
+                                    "topic": "clear-select-value"
+                                }
+                            ],
+                            "listeners": [
+                                {
+                                    "handler": "service",
+                                    "topic": "give-me-bid-method",
+                                    "payloadExtend": {
+                                        "action": "callback",
+                                        "emitter": "emitValue"
+                                    }
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "线上招标",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "线下招标",
+                                    "value": "-1"
+                                }
+                            ]
+                        },
+                        "sort": 0,
+                        "fields": [
+                            {
+                                "fieldId": 481,
+                                "fieldName": "招标方式",
+                                "fieldCode": "bidMethod",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Radio",
+                                "extra": null,
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 239,
+                        "fieldName": "集团标底",
+                        "fieldCode": "basePriceGroupCompiler",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Null",
+                        "extra": null,
+                        "sort": 2,
+                        "fields": [
+                            {
+                                "fieldId": 477,
+                                "fieldName": "集团标底编制人",
+                                "fieldCode": "basePriceGroupCompiler",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "FormItemSwitchContainer",
+                                "extra": {
+                                    "servants": {
+                                        "0": {
+                                            "widget": "Select",
+                                            "key": "planDisabled",
+                                            "disabled": true
+                                        },
+                                        "1": {
+                                            "widget": "Select",
+                                            "api": "/basic/admin/get-all-system-user",
+                                            "userDetailAPI": "/common/user/detail",
+                                            "adapter": "userSelectAdapter",
+                                            "rules": {
+                                                "required": {
+                                                    "validator": "required",
+                                                    "errorMessage": "必填字段， 请填写"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "radioLabel": "是否需要集团编制标底",
+                                    "defaultValue": {
+                                        "checked": "0"
+                                    },
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ],
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 0px 10px 18px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "500px",
+                                        "minWidth": 330,
+                                        "required": true
+                                    }
+                                },
+                                "sort": 20,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 476,
+                                "fieldName": "是否需要集团编制标底",
+                                "fieldCode": "relateGroupBasePrice",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Null",
+                                "extra": null,
+                                "sort": 30,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 97,
+                        "fieldName": "招标规则",
+                        "fieldCode": "bidRule",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "FormItemContainer",
+                        "extra": null,
+                        "sort": 5,
+                        "fields": [
+                            {
+                                "fieldId": 257,
+                                "fieldName": "招标模式",
+                                "fieldCode": "bidWay",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Select",
+                                "extra": {
+                                    "search": false,
+                                    "api": "/bid/business-line/bid-way-list",
+                                    "adapter": "idNameAdapter",
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 0px 10px 18px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "360px",
+                                        "minWidth": 330,
+                                        "required": true
+                                    },
+                                    "rules": {
+                                        "required": {
+                                            "validator": "required",
+                                            "errorMessage": "必填字段， 请填写"
+                                        }
+                                    }
+                                },
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 259,
+                                "fieldName": "承包方式",
+                                "fieldCode": "jobMode",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Select",
+                                "extra": {
+                                    "search": false,
+                                    "api": "/bid/bid-field-config/simple-list",
+                                    "adapter": "idNameAdapter",
+                                    "staticParams": {
+                                        "type": "job_mode"
+                                    },
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 0px 10px 18px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "360px",
+                                        "minWidth": 330
+                                    }
+                                },
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 264,
+                                "fieldName": "业务操作配置",
+                                "fieldCode": "operateConfig",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "BidBizOpConfigCheckbox",
+                                "extra": {
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 0px 10px 18px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "715px",
+                                        "minWidth": 330
+                                    },
+                                    "listeners": [
+                                        {
+                                            "handler": "service",
+                                            "topic": "emit-change-value",
+                                            "payloadExtend": {
+                                                "action": "hideCurrentModule"
+                                            }
+                                        }
+                                    ],
+                                    "options": [
+                                        {
+                                            "label": "是否使用清单",
+                                            "value": "useStandardBill",
+                                            "key": "useStandardBill",
+                                            "type": 3
+                                        },
+                                        {
+                                            "label": "是否编制标底",
+                                            "value": "compileBasePrice",
+                                            "key": "compileBasePrice",
+                                            "type": 4
+                                        },
+                                        {
+                                            "label": "是否进行项目经理面试",
+                                            "value": "isInterview",
+                                            "key": "isInterview"
+                                        }
+                                    ]
+                                },
+                                "sort": 15,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 118,
+                        "fieldName": "清单编制人",
+                        "fieldCode": "materialsBillCompiler",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Null",
+                        "extra": {
+                            "adapter": "userSelectAdapter",
+                            "api": "/basic/admin/get-all-system-user",
+                            "userDetailAPI": "/common/user/detail",
+                            "placeholder": "",
+                            "disabled": true,
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 20px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "350px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            }
+                        },
+                        "sort": 5,
+                        "fields": [
+                            {
+                                "fieldId": 261,
+                                "fieldName": "清单编制人",
+                                "fieldCode": "materialsBillCompiler",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 20,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 266,
+                        "fieldName": "含税报价",
+                        "fieldCode": "arithmeticQuoteIncludingTax",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "RadioGroup",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "HorizontalFormLayout",
+                                "gutter": 22,
+                                "titleFontSize": 13,
+                                "display": "block",
+                                "width": 650,
+                                "labelWidth": 90,
+                                "minWidth": 360,
+                                "labelHeight": 22
+                            },
+                            "delayBroadcast": {
+                                "emitter": "onChange"
+                            },
+                            "defaultValue": "0",
+                            "options": [
+                                {
+                                    "label": "需要",
+                                    "value": "0"
+                                },
+                                {
+                                    "label": "不需要",
+                                    "value": "-1"
+                                }
+                            ]
+                        },
+                        "sort": 8,
+                        "fields": [
+                            {
+                                "fieldId": 489,
+                                "fieldName": "含税报价",
+                                "fieldCode": "arithmeticQuoteIncludingTax",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Radio",
+                                "extra": null,
+                                "sort": 10,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 119,
+                        "fieldName": "标底编制人",
+                        "fieldCode": "basePriceCompiler",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "Null",
+                        "extra": {
+                            "adapter": "userSelectAdapter",
+                            "api": "/basic/admin/get-all-system-user",
+                            "userDetailAPI": "/common/user/detail",
+                            "placeholder": "",
+                            "disabled": true,
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "padding": "10px 20px 10px 0px ",
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "350px",
+                                "minWidth": 330,
+                                "required": true
+                            },
+                            "rules": {
+                                "required": {
+                                    "validator": "required",
+                                    "errorMessage": "必填字段， 请填写"
+                                }
+                            }
+                        },
+                        "sort": 10,
+                        "fields": [
+                            {
+                                "fieldId": 262,
+                                "fieldName": "标底编制人",
+                                "fieldCode": "basePriceCompiler",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 25,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    }
+                ],
+                "remark": ""
+            },
+            {
+                "fieldId": 22,
+                "fieldName": "评标规则",
+                "fieldCode": "assessRule",
+                "required": null,
+                "readonly": null,
+                "widget": "FormItemContainer",
+                "extra": {
+                    "formLayout": {
+                        "layout": "ContainerFormLayout",
+                        "display": "block",
+                        "titleFontSize": 18,
+                        "padding": "20px 40px 20px 40px",
+                        "background": "#ffffff"
+                    }
+                },
+                "sort": 15,
+                "fields": [
+                    {
+                        "fieldId": 98,
+                        "fieldName": "评标规则",
+                        "fieldCode": "assessRule",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "BidEvaluateBidSettingCtrls",
+                        "extra": {
+                            "unNegotiateSettingWidget": true,
+                            "options": [
+                                {
+                                    "label": "线上评标",
+                                    "value": 0,
+                                    "key": 0
+                                },
+                                {
+                                    "label": "线下评标",
+                                    "value": -1,
+                                    "key": -1
+                                }
+                            ],
+                            "listeners": [
+                                {
+                                    "topic": "emit-change-value",
+                                    "handler": "getValue"
+                                }
+                            ],
+                            "content": "如果无需供应商线上回标、评标，则评标方式选“线下评标”，否则将导致招标异常走不下去。"
+                        },
+                        "sort": 0,
+                        "fields": [
+                            {
+                                "fieldId": 266,
+                                "fieldName": "评标方法",
+                                "fieldCode": "assessMode",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": {
+                                    "options": [
+                                        {
+                                            "label": "经评审的最低投标价法",
+                                            "key": 0
+                                        },
+                                        {
+                                            "label": "综合评审法",
+                                            "key": 1
+                                        },
+                                        {
+                                            "label": "平均值法",
+                                            "key": 2
+                                        }
+                                    ]
+                                },
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 267,
+                                "fieldName": "需要评技术标",
+                                "fieldCode": "needTechnicalAssess",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": {
+                                    "options": [
+                                        {
+                                            "key": 1,
+                                            "label": "是"
+                                        },
+                                        {
+                                            "key": 0,
+                                            "label": "否"
+                                        }
+                                    ]
+                                },
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 268,
+                                "fieldName": "评标顺序",
+                                "fieldCode": "assessOrder",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": {
+                                    "options": [
+                                        {
+                                            "key": 0,
+                                            "label": "同时发同时回，同时评"
+                                        },
+                                        {
+                                            "key": 1,
+                                            "label": "同时回，先开技术标，再开商务标"
+                                        }
+                                    ]
+                                },
+                                "sort": 10,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 269,
+                                "fieldName": "技术标权重",
+                                "fieldCode": "technicalWeight",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 15,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 270,
+                                "fieldName": "商务标权重",
+                                "fieldCode": "businessWeight",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 20,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    }
+                ],
+                "remark": ""
+            },
+            {
+                "fieldId": 24,
+                "fieldName": "提资文件",
+                "fieldCode": "preMaterial",
+                "required": null,
+                "readonly": null,
+                "widget": "FormItemContainer",
+                "extra": {
+                    "formLayout": {
+                        "layout": "ContainerFormLayout",
+                        "display": "block",
+                        "titleFontSize": 18,
+                        "padding": "20px 40px 20px 40px",
+                        "background": "#ffffff"
+                    }
+                },
+                "sort": 20,
+                "fields": [
+                    {
+                        "fieldId": 120,
+                        "fieldName": "招标提资信息",
+                        "fieldCode": "preMaterial",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "FormItemContainer",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "verticalAlign": "top",
+                                "hideTitle": true,
+                                "titleFontSize": 13,
+                                "display": "inline-block",
+                                "width": "715px",
+                                "minWidth": 330,
+                                "required": true
+                            }
+                        },
+                        "sort": 0,
+                        "fields": [
+                            {
+                                "fieldId": 290,
+                                "fieldName": "是否关联招标提资",
+                                "fieldCode": "relatePreMaterial",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Null",
+                                "extra": null,
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 291,
+                                "fieldName": "招标提资名称",
+                                "fieldCode": "preMaterial",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "FormItemSwitchContainer",
+                                "extra": {
+                                    "formLayout": {
+                                        "layout": "VerticalFormLayout",
+                                        "padding": "10px 18px 10px 0px ",
+                                        "titleFontSize": 13,
+                                        "display": "inline-block",
+                                        "width": "715px",
+                                        "minWidth": 330,
+                                        "required": true,
+                                        "subTips": "切换提资，您修改过的招标提资将被清空"
+                                    },
+                                    "servants": {
+                                        "0": {
+                                            "widget": "Select",
+                                            "disabled": true,
+                                            "key": "planDisabled"
+                                        },
+                                        "1": {
+                                            "widget": "Select",
+                                            "adapter": "idTitleAdapter",
+                                            "api": "/bid/bid-pre-material/simplify-list",
+                                            "key": "preMaterial"
+                                        }
+                                    },
+                                    "radioLabel": "是否关联招标提资",
+                                    "emitters": [
+                                        {
+                                            "bind": "onSubmitValue",
+                                            "topic": "purchase-preMaterial-change"
+                                        },
+                                        {
+                                            "bind": "didMount",
+                                            "topic": "purchase-preMaterial-change"
+                                        }
+                                    ],
+                                    "defaultValue": {
+                                        "checked": "0"
+                                    },
+                                    "options": [
+                                        {
+                                            "label": "是",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "label": "否",
+                                            "value": "0"
+                                        }
+                                    ],
+                                    "placeholder": ""
+                                },
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 124,
+                        "fieldName": "招标提资任务",
+                        "fieldCode": "preMaterialTask",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "BidSetUpAdvanceTable",
+                        "extra": {
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "hideTitle": true,
+                                "titleFontSize": 18,
+                                "background": "#ffffff",
+                                "display": "block",
+                                "width": "100%"
+                            },
+                            "emitters": [
+                                {
+                                    "topic": "reject-taskList-value",
+                                    "bind": "onChange"
+                                }
+                            ],
+                            "listeners": [
+                                {
+                                    "handler": "service",
+                                    "topic": "purchase-preMaterial-change"
+                                }
+                            ]
+                        },
+                        "sort": 5,
+                        "fields": [
+                            {
+                                "fieldId": 340,
+                                "fieldName": "招标提资任务",
+                                "fieldCode": "preMaterialTask",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "",
+                                "extra": null,
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    },
+                    {
+                        "fieldId": 105,
+                        "fieldName": "其他提资文件",
+                        "fieldCode": "otherFile",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "FormItemTableContainer",
+                        "extra": {
+                            "defaultValue": [
+                                {
+                                    "rowKey": "bidTimesConfig-row1-default-value"
+                                }
+                            ],
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "titleFontSize": 14,
+                                "titleFontWeight": "bold",
+                                "background": "#ffffff",
+                                "display": "block",
+                                "width": "100%"
+                            },
+                            "addable": true,
+                            "deletable": true
+                        },
+                        "sort": 10,
+                        "fields": [
+                            {
+                                "fieldId": 311,
+                                "fieldName": "文档名称",
+                                "fieldCode": "fileName",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "UploadInput",
+                                "extra": {
+                                    "width": 242,
+                                    "maxLength": 1
+                                },
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 336,
+                                "fieldName": "大小（M）",
+                                "fieldCode": "fileSize",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "CellLinkedDisplay",
+                                "extra": {
+                                    "useRowValue": true,
+                                    "linkField": "filename",
+                                    "displayField": "fileSize",
+                                    "formatter": "megaByte"
+                                },
+                                "sort": 10,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 337,
+                                "fieldName": "上传人",
+                                "fieldCode": "uploaderName",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "PlainText",
+                                "extra": null,
+                                "sort": 15,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 338,
+                                "fieldName": "上传日期",
+                                "fieldCode": "uploadTime",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "PlainText",
+                                "extra": null,
+                                "sort": 20,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 339,
+                                "fieldName": "说明",
+                                "fieldCode": "remark",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Input",
+                                "extra": {
+                                    "rules": {
+                                        "maxLength": {
+                                            "validator": "maxLength",
+                                            "errorMessage": "长度不得超过100",
+                                            "arguments": 100
+                                        }
+                                    },
+                                    "width": 452
+                                },
+                                "sort": 25,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    }
+                ],
+                "remark": ""
+            },
+            {
+                "fieldId": 23,
+                "fieldName": "参投单位名称/实际承包人",
+                "fieldCode": "supplierList",
+                "required": null,
+                "readonly": null,
+                "widget": "FormItemContainer",
+                "extra": {
+                    "formLayout": {
+                        "layout": "ContainerFormLayout",
+                        "display": "block",
+                        "titleFontSize": 18,
+                        "padding": "20px 40px 20px 40px",
+                        "background": "#ffffff"
+                    }
+                },
+                "sort": 25,
+                "fields": [
+                    {
+                        "fieldId": 99,
+                        "fieldName": "参投单位",
+                        "fieldCode": "supplierList",
+                        "required": 0,
+                        "readonly": 0,
+                        "widget": "FormItemTableContainer",
+                        "extra": {
+                            "cellEmitters": [
+                                {
+                                    "bind": "onChange",
+                                    "topicPrefix": "[rowKey]-",
+                                    "bindCell": "*-supplier",
+                                    "topic": "change-supplierList-value"
+                                },
+                                {
+                                    "bind": "onChange",
+                                    "topicPrefix": "supplier-",
+                                    "bindCell": "*-supplier",
+                                    "topic": "change-col-supplierList-value"
+                                },
+                                {
+                                    "bind": "onChange",
+                                    "topicPrefix": "[rowKey]-",
+                                    "bindCell": "*-contact",
+                                    "topic": "change-contact-value"
+                                },
+                                {
+                                    "bind": "didMount",
+                                    "bindCell": "*-supplier",
+                                    "topic": "give-me-bid-method"
+                                }
+                            ],
+                            "formLayout": {
+                                "layout": "VerticalFormLayout",
+                                "hideTitle": true,
+                                "titleFontSize": 14,
+                                "titleFontWeight": "bold",
+                                "background": "#ffffff",
+                                "display": "block",
+                                "width": "100%"
+                            },
+                            "addable": true,
+                            "emitters": [
+                                {
+                                    "bind": "onChange",
+                                    "topic": "change-col-supplierList-value"
+                                }
+                            ],
+                            "defaultValue": [
+                                {
+                                    "rowKey": "bidSupplierList-row1-default-value-1"
+                                }
+                            ],
+                            "deletable": true,
+                            "cellListeners": [
+                                {
+                                    "handler": "getOptionsBySupplier",
+                                    "topicPrefix": "[rowKey]-",
+                                    "bindCell": "*-contact",
+                                    "topic": "change-supplierList-value",
+                                    "payloadExtend": {
+                                        "setDefaultValue": true,
+                                        "action": "setOpentions",
+                                        "key": "contactList"
+                                    }
+                                },
+                                {
+                                    "handler": "service",
+                                    "topicPrefix": "supplier-",
+                                    "bindCell": "*-supplier",
+                                    "topic": "change-col-supplierList-value",
+                                    "payloadExtend": {
+                                        "action": "setOpentionsDisabled"
+                                    }
+                                },
+                                {
+                                    "handler": "service",
+                                    "bindCell": "*-supplier",
+                                    "topic": "change-col-supplierList-value",
+                                    "payloadExtend": {
+                                        "action": "setOpentionsDisabled"
+                                    }
+                                },
+                                {
+                                    "handler": "service",
+                                    "topicPrefix": "[rowKey]-",
+                                    "bindCell": "*-contactMobile",
+                                    "topic": "change-contact-value",
+                                    "payloadExtend": {
+                                        "action": "setValue",
+                                        "field": "mobile"
+                                    }
+                                },
+                                {
+                                    "handler": "service",
+                                    "topic": "emit-change-value",
+                                    "bindCell": "*-supplier",
+                                    "payloadExtend": {
+                                        "action": "changeBidMethod"
+                                    }
+                                },
+                                {
+                                    "handler": "service",
+                                    "topic": "emit-bidMethod-value",
+                                    "bindCell": "*-supplier",
+                                    "payloadExtend": {
+                                        "action": "setBidMethod"
+                                    }
+                                }
+                            ],
+                            "listeners": [
+                                {
+                                    "handler": "service",
+                                    "topic": "clear-select-value",
+                                    "payloadExtend": {
+                                        "action": "clearSelectValue"
+                                    }
+                                },
+                                {
+                                    "handler": "supplierReject",
+                                    "topic": "reject-detail-value"
+                                }
+                            ]
+                        },
+                        "sort": 0,
+                        "fields": [
+                            {
+                                "fieldId": 272,
+                                "fieldName": "参投单位名称",
+                                "fieldCode": "supplier",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Select",
+                                "extra": {
+                                    "useRowValue": true,
+                                    "disabledFetchOnMount": true,
+                                    "broadcastDidMount": true,
+                                    "cacheDisabledOptions": true,
+                                    "setRowSelectOptions": true,
+                                    "adapter": "supplierListAdapter",
+                                    "width": 500,
+                                    "rules": {
+                                        "required": {
+                                            "validator": "required",
+                                            "errorMessage": "必填项，请填写"
+                                        }
+                                    },
+                                    "api": "/bid/supplier-center/formal-list",
+                                    "allowClear": false,
+                                    "required": true,
+                                    "autosize": {
+                                        "minRows": 1
+                                    }
+                                },
+                                "sort": 0,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 283,
+                                "fieldName": "联系人",
+                                "fieldCode": "contact",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "Select",
+                                "extra": {
+                                    "rules": {
+                                        "required": {
+                                            "validator": "required",
+                                            "errorMessage": "必填项，请填写"
+                                        }
+                                    },
+                                    "required": true,
+                                    "search": false
+                                },
+                                "sort": 5,
+                                "fields": null,
+                                "remark": null
+                            },
+                            {
+                                "fieldId": 273,
+                                "fieldName": "手机",
+                                "fieldCode": "contactMobile",
+                                "required": 0,
+                                "readonly": 0,
+                                "widget": "PlainText",
+                                "extra": {
+                                    "disabled": true,
+                                    "showWarn": true
+                                },
+                                "sort": 10,
+                                "fields": null,
+                                "remark": null
+                            }
+                        ],
+                        "remark": null
+                    }
+                ],
+                "remark": ""
+            }
+        ],
+        "templateData": {
+            "basicInfo": {
+                "section": [
+                    {
+                        "valuation": 1.00,
+                        "name": "1",
+                        "remark": "1",
+                        "sort": 1,
+                        "id": "ac2030b2-8242-498e-ab8b-d37b9d92569c",
+                        "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                        "contractPlan": []
+                    },
+                    {
+                        "valuation": 2.00,
+                        "name": "2",
+                        "remark": "2",
+                        "sort": 2,
+                        "id": "d610a0fb-dbfc-4133-8720-4cc4ce3f0f6a",
+                        "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                        "contractPlan": []
+                    }
+                ],
+                "bidPurchaseType": 0,
+                "id": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                "serviceType": [
+                    {
+                        "categoryName": "物业管理类2",
+                        "categoryId": "1ff80c0a-7618-4d51-85fe-1b90aaf5eabe",
+                        "businessTypeCategoryId": "1074f983-b0eb-45e0-adbe-bc6329f78ce8",
+                        "businessTypeName": "地产业态",
+                        "id": "45191e5f-29af-4547-bccd-f35299b8e0b9",
+                        "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                        "businessTypeId": "ddaa8b51-cdf9-11e9-847b-7cd30aeb74a8"
+                    }
+                ],
+                "number": "ZBGC-20210419-0001",
+                "title": "反反复复",
+                "companyId": "00016A100000000011TD",
+                "companyName": "雅居乐>>雅生活集团",
+                "company": {
+                    "key": "00016A100000000011TD",
+                    "label": "雅居乐>>雅生活集团"
+                },
+                "departmentId": "10036A10000000001NQB",
+                "departmentName": "活动制作部",
+                "department": {
+                    "key": "10036A10000000001NQB",
+                    "label": "活动制作部"
+                },
+                "projectList": [
+                    {
+                        "projectId": "39fa7d1f-589d-a745-b873-91a79e57962e",
+                        "id": "5ecd566e-94e8-494b-aae7-91c10ae7398f",
+                        "projectName": "雅生活集团-雅居乐二开项目",
+                        "erpCode": "",
+                        "businessId": "fd194ece-59ac-45d9-b3e9-898dedf595a6"
+                    }
+                ],
+                "manager": {
+                    "memberId": "39f55c5a-1023-88bc-c84a-343240e7a65a",
+                    "name": "agile01",
+                    "id": "76ad9adb-96a5-48ef-9bb7-363b2c64eac4",
+                    "sendTask": 0,
+                    "type": 0,
+                    "orgName": "雅居乐",
+                    "businessId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                    "userId": "39f55c5a-1023-88bc-c84a-343240e7a65a",
+                    "userName": "agile01"
+                }
+            },
+            "bidRule": {
+                "jobModeName": "单价包干",
+                "bidWayId": "ae1fcb9b-e77e-413b-a780-e8aefe947252",
+                "wayName": "简易竞价/邀请招标（使用频率>50%）",
+                "id": "a68138c8-e6d8-4048-85dc-966f824415fb",
+                "jobMode": {
+                    "key": "8f178cad-129c-11eb-adbd-7cd30ae017fa",
+                    "label": "单价包干"
+                },
+                "compileBasePrice": 1,
+                "isInterview": 0,
+                "useStandardBill": 1,
+                "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                "bidWay": {
+                    "key": "ae1fcb9b-e77e-413b-a780-e8aefe947252",
+                    "label": "简易竞价/邀请招标（使用频率>50%）"
+                },
+                "operateConfig": {
+                    "useStandardBill": 1,
+                    "compileBasePrice": 1,
+                    "isInterview": 0
+                },
+                "useStandardBillEndTime":"2021-03-21 08:01",
+                "compileBasePriceEndTime":"2021-03-21 08:02",
+                "bidMethod": 0,
+                "arithmeticQuoteIncludingTax": 0,
+                "basePriceGroupCompiler": {
+                    "memberId": "",
+                    "name": "",
+                    "id": "7bc8fb22-7f15-4c84-b8e2-bda5a8229e03",
+                    "sendTask": 0,
+                    "type": 9,
+                    "orgName": "",
+                    "businessId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                    "userId": "",
+                    "userName": ""
+                },
+                "relateGroupBasePrice": 0,
+                "materialsBillCompiler": {
+                    "memberId": "39f55c5a-1023-88bc-c84a-343240e7a65a",
+                    "name": "agile01",
+                    "id": "8f450df8-7eec-49bd-b982-5042854cc4de",
+                    "sendTask": 0,
+                    "type": 3,
+                    "orgName": "雅居乐",
+                    "businessId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                    "userId": "39f55c5a-1023-88bc-c84a-343240e7a65a",
+                    "userName": "agile01"
+                },
+                "basePriceCompiler": {
+                    "memberId": "39f55c5a-1023-88bc-c84a-343240e7a65a",
+                    "name": "agile01",
+                    "id": "52f7ce82-2589-4cc6-970e-5a9602eb72da",
+                    "sendTask": 0,
+                    "type": 4,
+                    "orgName": "雅居乐",
+                    "businessId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                    "userId": "39f55c5a-1023-88bc-c84a-343240e7a65a",
+                    "userName": "agile01"
+                }
+            },
+            "assessRule": {
+                "assessOrder": {
+                    "key": null,
+                    "label": null
+                },
+                "technicalWeight": null,
+                "id": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                "businessWeight": null,
+                "assessMode": {
+                    "key": 0,
+                    "label": "经评审的最低投标价法"
+                },
+                "needTechnicalAssess": {
+                    "key": 0,
+                    "label": "否"
+                }
+            },
+            "supplierList": {
+                "supplierList": [
+                    {
+                        "contactName": "撒发顺丰",
+                        "contactMobile": "15601543586",
+                        "id": "ed1dd3fe-fedb-4b67-902b-a876e350a923",
+                        "supplierName": "万方城镇投资发展股份有限公司",
+                        "contactId": "39fbe69b-f484-2baf-5423-4d52f090c971",
+                        "supplierId": "39fbe69b-f47b-eff3-864e-8a07223a46ad",
+                        "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                        "supplier": {
+                            "label": "万方城镇投资发展股份有限公司",
+                            "id": "ed1dd3fe-fedb-4b67-902b-a876e350a923",
+                            "key": "39fbe69b-f47b-eff3-864e-8a07223a46ad"
+                        },
+                        "contact": {
+                            "label": "撒发顺丰",
+                            "key": "39fbe69b-f484-2baf-5423-4d52f090c971"
+                        }
+                    }
+                ]
+            },
+            "preMaterial": {
+                "otherFile": [],
+                "relatePreMaterial": 0,
+                "preMaterialTitle": null,
+                "id": "a68138c8-e6d8-4048-85dc-966f824415fb",
+                "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                "preMaterialId": "",
+                "preMaterial": {
+                    "key": "",
+                    "label": null
+                }
+            },
+            "planInfo": {
+                "planTitle": null,
+                "isRelatePlan": 0,
+                "id": "a68138c8-e6d8-4048-85dc-966f824415fb",
+                "planId": "",
+                "plan": {
+                    "key": "",
+                    "label": null
+                },
+                "planFinishDate": null,
+                "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6",
+                "timeInfo": [
+                    {
+                        "planBusinessEndTime": null,
+                        "planTechnicalEndTime": null,
+                        "planConfirmBidTime": null,
+                        "planSendBidTime": null,
+                        "id": "a68138c8-e6d8-4048-85dc-966f824415fb",
+                        "solutionId": "fd194ece-59ac-45d9-b3e9-898dedf595a6"
+                    }
+                ]
+            }
+        }
+    }
+}

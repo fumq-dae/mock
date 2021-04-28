@@ -1,0 +1,266 @@
+{
+    "widget": "FormItemContainer",
+    "children": [
+        {
+            "formLayout": {
+                "layout": "ContainerFormLayout",
+                "padding": "20px 40px 20px 40px",
+                "titleFontSize": 18,
+                "background": "#ffffff",
+                "display": "block"
+            },
+            "widget": "FormItemContainer",
+            "children": [
+                {
+                    "formLayout": {
+                        "layout": "VerticalFormLayout",
+                        "padding": "10px 18px 10px 0px ",
+                        "titleFontSize": 13,
+                        "display": "inline-block",
+                        "width": "715px",
+                        "minWidth": 330,
+                        "required": true
+                    },
+                    "widget": "Select",
+                    "adapter": "serviceNamePathCompanyAdapter",
+                    "listeners": [
+                        {
+                            "handler": "service",
+                            "topic": "give-me-company-value",
+                            "payloadExtend": {
+                                "action": "callback",
+                                "tip": false,
+                                "emitter": "emitValue"
+                            }
+                        }
+                    ],
+                    "fieldCode": "company",
+                    "emitters": [
+                        {
+                            "bind": "onChange",
+                            "topic": "change-service-company-value",
+                            "payloadExtend": {
+                                "tip": true
+                            }
+                        },
+                        {
+                            "bind": "emitValue",
+                            "topic": "emit-service-company-value",
+                            "payloadExtend": {
+                                "tip": true
+                            }
+                        }
+                    ],
+                    "rules": {
+                        "required": {
+                            "validator": "required",
+                            "errorMessage": "必填字段， 请填写"
+                        }
+                    },
+                    "placeholder": "",
+                    "api": "/basic/org/get-actionable-org-with-keyword",
+                    "sort": 5,
+                    "title": "所属组织",
+                    "key": "company"
+                },
+                {
+                    "formLayout": {
+                        "layout": "VerticalFormLayout",
+                        "padding": "10px 0px 10px 18px ",
+                        "titleFontSize": 13,
+                        "display": "inline-block",
+                        "width": "370px",
+                        "minWidth": 330,
+                        "required": false
+                    },
+                    "widget": "Input",
+                    "disabled": true,
+                    "placeholder": "",
+                    "title": "招标计划编号",
+                    "key": "number"
+                },
+                {
+                    "formLayout": {
+                        "layout": "VerticalFormLayout",
+                        "padding": "10px 18px 10px 0px ",
+                        "titleFontSize": 13,
+                        "display": "inline-block",
+                        "width": "715px",
+                        "minWidth": 330,
+                        "required": true
+                    },
+                    "widget": "ProjectSelect",
+                    "listeners": [
+                        {
+                            "handler": "service",
+                            "topic": "give-me-bid-project",
+                            "payloadExtend": {
+                                "action": "emitValue"
+                            }
+                        },
+                        {
+                            "handler": "service",
+                            "topic": "change-service-company-value",
+                            "payloadExtend": {
+                                "action": "updateProjectOptionsWithCompany"
+                            }
+                        },
+                        {
+                            "handler": "service",
+                            "topic": "change-service-company-value",
+                            "payloadExtend": {
+                                "action": "clearValue"
+                            }
+                        },
+                        {
+                            "handler": "service",
+                            "topic": "emit-service-company-value",
+                            "payloadExtend": {
+                                "action": "updateProjectOptionsWithCompany"
+                            }
+                        },
+                        {
+                            "handler": "service",
+                            "topic": "send-me-company-value",
+                            "payloadExtend": {
+                                "action": "sendProjectOptionsWithCompany"
+                            }
+                        }
+                    ],
+                    "noInitFetch": true,
+                    "emitters": [
+                        {
+                            "bind": "onChange",
+                            "topic": "bid-project-change"
+                        },
+                        {
+                            "bind": "emitValue",
+                            "topic": "emit-bid-project-value"
+                        },
+                        {
+                            "bind": "didMount",
+                            "topic": "give-me-company-value"
+                        },
+                        {
+                            "bind": "didMount",
+                            "topic": "bid-project-change"
+                        }
+                    ],
+                    "multiple": true,
+                    "rules": {
+                        "required": {
+                            "validator": "required",
+                            "errorMessage": "必填字段， 请填写"
+                        }
+                    },
+                    "sort": 10,
+                    "needCompanyId": true,
+                    "title": "所属项目",
+                    "key": "project",
+                    "disabledIfNotEnd": true
+                },
+                {
+                    "formLayout": {
+                        "layout": "VerticalFormLayout",
+                        "padding": "10px 0px 10px 18px ",
+                        "titleFontSize": 13,
+                        "display": "inline-block",
+                        "width": "370px",
+                        "minWidth": 330,
+                        "required": true
+                    },
+                    "widget": "UserSelect",
+                    "adapter": "userSelectAdapter",
+                    "disabled": true,
+                    "rules": {
+                        "required": {
+                            "validator": "required",
+                            "errorMessage": "必填字段， 请填写"
+                        }
+                    },
+                    "api": "/basic/admin/get-all-system-user",
+                    "userDetailAPI": "/common/user/detail",
+                    "placeholder": "",
+                    "title": "填报人",
+                    "key": "organiser"
+                },
+                {
+                    "formLayout": {
+                        "layout": "VerticalFormLayout",
+                        "padding": "10px 18px 10px 0px ",
+                        "titleFontSize": 13,
+                        "display": "inline-block",
+                        "width": "80%",
+                        "minWidth": 330,
+                        "required": true
+                    },
+                    "widget": "Textarea",
+                    "emitters": [
+                        {
+                            "bind": "onChange",
+                            "topic": "emit-bid-project-abbreviation-value"
+                        },
+                        {
+                            "bind": "didMount",
+                            "topic": "emit-bid-project-abbreviation-value"
+                        }
+                    ],
+                    "rules": {
+                        "required": {
+                            "validator": "required",
+                            "errorMessage": "必填字段， 请填写"
+                        },
+                        "maxLength": {
+                            "validator": "maxLength",
+                            "errorMessage": "招标计划简称不超过200字",
+                            "arguments": 200
+                        }
+                    },
+                    "title": "招标计划简称",
+                    "key": "bidPlanAbbreviation",
+                    "autosize": {
+                        "minRows": 1
+                    }
+                },
+                {
+                    "formLayout": {
+                        "layout": "VerticalFormLayout",
+                        "padding": "10px 18px 10px 0px ",
+                        "titleFontSize": 13,
+                        "display": "inline-block",
+                        "width": "80%",
+                        "minWidth": 330
+                    },
+                    "widget": "Textarea",
+                    "listeners": [
+                        {
+                            "handler": "service",
+                            "topic": "bid-project-change",
+                            "payloadExtend": {
+                                "action": "setBidProject"
+                            }
+                        },
+                        {
+                            "handler": "service",
+                            "topic": "emit-bid-project-abbreviation-value",
+                            "payloadExtend": {
+                                "action": "setProjectValue"
+                            }
+                        }
+                    ],
+                    "disabled": true,
+                    "sort": 10,
+                    "title": "招标计划名称",
+                    "key": "title",
+                    "autosize": {
+                        "minRows": 1
+                    }
+                }
+            ],
+            "title": "基本信息",
+            "key": "basicInfo"
+        }
+    ],
+    "title": "root",
+    "key": "bxidPlanData"
+}

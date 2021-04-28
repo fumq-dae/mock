@@ -1,0 +1,196 @@
+{
+    "time": "2021-04-25 17:27:47",
+    "result": true,
+    "code": 0,
+    "message": null,
+    "messageType": 0,
+    "searchDate": null,
+    "data": [
+        {
+            "id": null,
+            "name": "",
+            "code": "processStatus",
+            "value": [
+                {
+                    "label": "全部",
+                    "key": "all"
+                },
+                {
+                    "label": "策划中",
+                    "key": "scheme"
+                },
+                {
+                    "label": "发起中",
+                    "key": "sponsor"
+                },
+                {
+                    "label": "回标中",
+                    "key": "return_bid"
+                },
+                {
+                    "label": "定标中",
+                    "key": "confirm_bid"
+                },
+                {
+                    "label": "已定标",
+                    "key": "confirm_bid_finish"
+                },
+                {
+                    "label": "已作废",
+                    "key": "invalid"
+                }
+            ]
+        },
+        {
+            "id": null,
+            "name": "",
+            "code": "buttonList",
+            "value": [
+                {
+                    "disabledTips": null,
+                    "code": "new_enquiry",
+                    "name": "新增询价",
+                    "icon": "plus",
+                    "disabled": false,
+                    "url": null,
+                    "tips": "",
+                    "clickTips": ""
+                }
+            ]
+        },
+        {
+            "id": null,
+            "name": "",
+            "code": "cardHeader",
+            "value": [
+                {
+                    "width": 300,
+                    "className": "",
+                    "label": "询价策划日期",
+                    "key": "schemeDate"
+                },
+                {
+                    "width": 300,
+                    "className": "",
+                    "label": "采购负责人",
+                    "key": "manager"
+                },
+                
+                {
+                    "width": 300,
+                    "className": "",
+                    "label": "",
+                    "key": ""
+                },
+                {
+                    "width": 300,
+                    "className": "",
+                    "label": "采购申请名称",
+                    "key": "applyTitle"
+                },
+                {
+                    "width": 300,
+                    "className": "",
+                    "label": "所属项目",
+                    "key": "projectList"
+                },
+                {
+                    "width": 300,
+                    "className": "",
+                    "label": "客户申请单号",
+                    "key": "projectList1"
+                }
+            ]
+        },
+        {
+            "id": null,
+            "name": "",
+            "code": "statusMap",
+            "value": [
+                {
+                    "label": "策划中",
+                    "key": "scheme"
+                },
+                {
+                    "label": "发起中",
+                    "key": "sponsor"
+                },
+                {
+                    "label": "回标中",
+                    "key": "return_bid"
+                },
+                {
+                    "label": "定标中",
+                    "key": "confirm_bid"
+                },
+                {
+                    "label": "已定标",
+                    "key": "confirm_bid_finish"
+                },
+                {
+                    "label": "已作废",
+                    "key": "invalid"
+                }
+            ]
+        },
+        {
+            "id": null,
+            "name": "",
+            "code": "search",
+            "value": [
+                {
+                    "widget": "",
+                    "extra": {
+                        "layout": ""
+                    },
+                    "className": "",
+                    "label": "",
+                    "placeholder": "请选择公司",
+                    "key": "companyIdList"
+                },
+                {
+                    "widget": "",
+                    "extra": {},
+                    "className": "",
+                    "label": "",
+                    "placeholder": "请选择项目",
+                    "key": "projectIdList"
+                },
+                {
+                    "widget": "",
+                    "extra": {},
+                    "className": "",
+                    "label": "",
+                    "placeholder": "搜索询价名称、采购申请、负责人、询价单号",
+                    "key": "keyword"
+                },
+                {
+                    "widget": "",
+                    "extra": {},
+                    "className": "",
+                    "label": "只看我负责的",
+                    "key": "isMyself"
+                }
+            ]
+        },
+        {
+            "id": null,
+            "name": "询价模式",
+            "code": "enquiryMode",
+            "value": [
+                {
+                    "label": "全部",
+                    "key": "all"
+                },
+                {
+                    "label": "线上询价",
+                    "key": "online"
+                },
+                {
+                    "label": "线下询价",
+                    "key": "offline"
+                }
+            ]
+        }
+    ]
+}

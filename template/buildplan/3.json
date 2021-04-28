@@ -1,0 +1,38 @@
+[
+    [
+        {
+            "width": 300,
+            "className": "",
+            "label": "询价策划日期",
+            "key": "schemeDate",
+            "title": "询价策划日期",
+            "dataIndex": "schemeDate"
+        },
+        {
+            "width": 300,
+            "className": "",
+            "label": "采购负责人",
+            "key": "manager",
+            "title": "采购负责人",
+            "dataIndex": "manager"
+        }
+    ],
+    [
+        {
+            "width": 300,
+            "className": "",
+            "label": "采购申请名称",
+            "key": "applyTitle",
+            "title": "采购申请名称",
+            "dataIndex": "applyTitle"
+        },
+        {
+            "width": 300,
+            "className": "",
+            "label": "所属项目",
+            "key": "projectList",
+            "title": "所属项目",
+            "dataIndex": "projectList"
+        }
+    ]
+]

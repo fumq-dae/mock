@@ -40,17 +40,18 @@ function findfile(rout, file) {
  * @param  path 文件路径
  */
 let mock = (rout, path) => {
-    let template = require(path);
+    rout=`${rout.toLowerCase()}`
+    let template = require(path); 
     let data = Mock.mock(template);
     let url = `http://${ip}:${config.port}/mock${rout}`;
     let requ = (req, res) => {
-        console.log("ceshidd");
         //设置允许跨域的域名，*代表允许任意域名跨域
         res.header("Access-Control-Allow-Origin", "*");
         //允许的header类型
         res.header("Access-Control-Allow-Headers", "Content-Type, api_key, Authorization,*");
         //跨域允许的请求方式 
         res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+
         if (req.method.toLowerCase() == 'options')
             res.send(200);  //让options尝试请求快速结束
         else
@@ -67,6 +68,12 @@ let mock = (rout, path) => {
         requ(req, res);
     });
     router.get(rout, (req, res, next) => {
+        requ(req, res);
+    });
+    router.get(`${rout}/:id`, (req, res, next) => {
+        requ(req, res);
+    });
+    router.options(`${rout}/:id`, (req, res, next) => {
         requ(req, res);
     });
     console.log(`${++total}）：${url}`);

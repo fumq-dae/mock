@@ -1,0 +1,80 @@
+{
+    "time": "2021-04-22 14:53:35",
+    "result": true,
+    "code": 0,
+    "message": null,
+    "messageType": 0,
+    "searchDate": null,
+    "data": [
+        {
+            "tab_id": "4",
+            "lvl": 0,
+            "tab_name": "集团级",
+            "fields": [
+                {
+                    "lvl": 1,
+                    "group_code": "equiry_message",
+                    "group_id": "1",
+                    "group_name": "询报价参数设置",
+                    "children": [
+                        {
+                            "field_id": "2",
+                            "widget": "PaymentSetting",
+                            "lvl": 2,
+                            "children": [],
+                            "field_code": "delivery_condition",
+                            "link": "/main/basic-info/setting/equiry/payment",
+                            "fields": [],
+                            "title": "交付条件设置",
+                            "hidable": true,
+                            "field_name": "交付条件设置"
+                        },
+                        {
+                            "field_id": "2",
+                            "widget": "PaymentSetting",
+                            "lvl": 2,
+                            "children": [],
+                            "field_code": "delivery_method",
+                            "link": "/main/basic-info/setting/equiry/delivery",
+                            "fields": [],
+                            "title": "送货方式设置",
+                            "hidable": true,
+                            "field_name": "送货方式设置"
+                        },
+                        {
+                            "field_id": "2",
+                            "widget": "PaymentSetting",
+                            "lvl": 2,
+                            "children": [],
+                            "field_code": "payment_type",
+                            "link": "/main/basic-info/setting/equiry/payment-type",
+                            "fields": [],
+                            "title": "款项类型设置",
+                            "hidable": true,
+                            "field_name": "款项类型设置"
+                        },
+                        {
+                            "field_id": "4",
+                            "widget": "ConfirmSubjectSetting",
+                            "lvl": 2,
+                            "children": [],
+                            "field_code": "confirm-subject",
+                            "link": "/main/basic-info/setting/equiry/confirm-subject",
+                            "fields": [],
+                            "title": "定标主体设置",
+                            "hidable": true,
+                            "field_name": "定标主体设置"
+                        }
+                    ],
+                    "extra": {},
+                    "group_type": "object",
+                    "title": "询报价参数设置",
+                    "hidable": true
+                }
+            ],
+            "title": "集团级",
+            "tab_code": "group_grade",
+            "hidable": true
+        }
+    ]
+}
